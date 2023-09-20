@@ -1,29 +1,40 @@
-const username : string = "tintt";
-const age : number = 29;
-const isActived : boolean = true;
+// Tupple
+let a : [number, string, boolean];
+// a = [10, '20'];
+a = [10, '20', true];
+// a = ['a', '20', true];
+console.log(a);
 
-console.log('username', username);
-console.log('age', age);
-console.log('isActive', isActived);
 
-// Array
-const numbers: number[] = [1, 2, 3];
-const names : string[] = ["tintt", "thailq", "huynq"];
-const mixed: any[] = [1, "a", true, {}];
-
-// Function trả về number
-const calculatePriceWithTax = (price : number) : number => {
-    const rate : number = 7; // Thuế giả định: 7%
-    const tax = (price * rate / 100);
-
-    return price + tax;
+// Enum
+enum UserRole {
+    ADMIN,
+    CUSTOMER
 }
 
-const showName = (name: string) : void => {
-    console.log(name)
+enum ProductCategory {
+    RING = 1,
+    NECK = 2
 }
 
-showName("Giang")
+console.log('UserRole.ADMIN', UserRole.ADMIN);
+console.log('ProductCategory.NECK', ProductCategory.NECK);
 
-const priceWithTax : number = calculatePriceWithTax(1000);
-console.log(priceWithTax)
+// Union type
+let count : number | string | boolean;
+
+count = 10;
+count = 'Zero';
+count = false;
+let c : [number | string, string, boolean];
+
+
+// Type alias
+type combineInputType = number | string | number;
+
+let b : combineInputType;
+
+b = 10;
+b = 'abc';
+
+let d : [combineInputType, string, boolean];
