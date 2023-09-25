@@ -1,29 +1,34 @@
-const username : string = "tintt";
-const age : number = 29;
-const isActived : boolean = true;
+import { Admin } from "./models/Admin";
+import { Product } from "./models/Product";
+import { User } from "./models/User";
 
-console.log('username', username);
-console.log('age', age);
-console.log('isActive', isActived);
+const user: User = new User();
+user.user_id = 2;
+user.email = 'sanglq@gmail.com';
+// user.username = 'sanglq';  => Lỗi do thuộc tính username là protected
+// user.password = 'pwd@123';  => Lỗi do thuộc tính username là private
+// console.log('user.username', user.username); => Lỗi do thuộc tính username là protected
+// console.log('user.password', user.password); => Lỗi do thuộc tính username là private
+console.log('user.user_id', user.user_id);
+console.log('user.email', user.email);
+console.log('user', user);
 
-// Array
-const numbers: number[] = [1, 2, 3];
-const names : string[] = ["tintt", "thailq", "huynq"];
-const mixed: any[] = [1, "a", true, {}];
+user.login('pwd123');
+// user.sendMessage('Thông báo'); => Lỗi do sendMessage() là protected
+// user.hashPassword(); => Lỗi do hashPassword() là private
 
-// Function trả về number
-const calculatePriceWithTax = (price : number) : number => {
-    const rate : number = 7; // Thuế giả định: 7%
-    const tax = (price * rate / 100);
+const admin: Admin = new Admin();
+// admin.username = 'abc'; // Lỗi do thuộc tính username là protected 
+admin.changeProps();
+console.log('admin', admin);
 
-    return price + tax;
-}
+console.log('getters & setters')
 
-const showName = (name: string) : void => {
-    console.log(name)
-}
-
-showName("Giang")
-
-const priceWithTax : number = calculatePriceWithTax(1000);
-console.log(priceWithTax)
+const product: Product = new Product(3, 'Candy', 12);
+console.log('product', product);
+product.setProductId = 10;
+product.setName = 'Table';
+product.setUnitPrice = 1000;
+console.log('product.product_id: ', product.getProductId);
+console.log('product.name: ', product.getName);
+console.log('product.unit_price: ', product.getUnitPrice);
