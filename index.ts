@@ -1,29 +1,28 @@
-const username : string = "tintt";
-const age : number = 29;
-const isActived : boolean = true;
+import { Order } from "./types/Order";
+import { Person } from "./types/Person";
 
-console.log('username', username);
-console.log('age', age);
-console.log('isActive', isActived);
-
-// Array
-const numbers: number[] = [1, 2, 3];
-const names : string[] = ["tintt", "thailq", "huynq"];
-const mixed: any[] = [1, "a", true, {}];
-
-// Function trả về number
-const calculatePriceWithTax = (price : number) : number => {
-    const rate : number = 7; // Thuế giả định: 7%
-    const tax = (price * rate / 100);
-
-    return price + tax;
+// Not good
+const sang: {first_name: string, last_name: string, age: number} = {
+    first_name: 'Sang',
+    last_name: 'Quang',
+    age: 23
 }
 
-const showName = (name: string) : void => {
-    console.log(name)
+const thai: Person = {
+    first_name: 'Thai',
+    last_name: 'Le Quang',
+    age: 25
+}
+const son: Person = {
+    first_name: 'Son',
+    last_name: 'Le Hoang',
+    age: 24
 }
 
-showName("Giang")
-
-const priceWithTax : number = calculatePriceWithTax(1000);
-console.log(priceWithTax)
+const order: Order = {
+    order_id: 1,
+    order_at: new Date(),
+    user_id: 1,
+    note: '',
+    order_details: []
+}
