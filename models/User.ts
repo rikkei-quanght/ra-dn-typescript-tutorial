@@ -11,8 +11,12 @@ export class User {
     // private: Chỉ có thể truy cập (bao gồm đọc và thay đổi giá trị) trong class này (trong các hàm thuộc class này)
     private password: string = 'pwd123';
 
-    constructor() {
-
+    constructor(
+        user_id: number,
+        password: string,
+    ) {
+        this.user_id = user_id;
+        this.password = password;
     }
 
     public login(password: string) {
@@ -31,5 +35,9 @@ export class User {
 
     private hashPassword(): void {
 
+    }
+
+    public set setPassword(password: string) {
+        this.password = password;
     }
 }

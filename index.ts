@@ -2,7 +2,7 @@ import { Admin } from "./models/Admin";
 import { Product } from "./models/Product";
 import { User } from "./models/User";
 
-const user: User = new User();
+const user: User = new User(3, 'pwd123');
 user.user_id = 2;
 user.email = 'sanglq@gmail.com';
 // user.username = 'sanglq';  => Lỗi do thuộc tính username là protected
@@ -17,10 +17,10 @@ user.login('pwd123');
 // user.sendMessage('Thông báo'); => Lỗi do sendMessage() là protected
 // user.hashPassword(); => Lỗi do hashPassword() là private
 
-const admin: Admin = new Admin();
+// const admin: Admin = new Admin(true);
 // admin.username = 'abc'; // Lỗi do thuộc tính username là protected 
-admin.changeProps();
-console.log('admin', admin);
+// admin.changeProps();
+// console.log('admin', admin);
 
 console.log('getters & setters')
 
@@ -32,3 +32,10 @@ product.setUnitPrice = 1000;
 console.log('product.product_id: ', product.getProductId);
 console.log('product.name: ', product.getName);
 console.log('product.unit_price: ', product.getUnitPrice);
+
+const user2 = new User(3, 'pwd');
+console.log('user2', user2);
+
+const admin2 = new Admin(true, 'abcd');
+admin2.setPassword = 'xyz';
+console.log('admin2', admin2);

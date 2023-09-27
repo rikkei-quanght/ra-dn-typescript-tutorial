@@ -5,6 +5,12 @@ export class Admin extends User {
 
     private is_system_admin: boolean = false;
 
+    constructor(is_system_admin: boolean, password: string) {
+        super(5, password);
+        this.user_id = 6;
+        this.is_system_admin = is_system_admin;
+    }
+
     public changeProps() {
         this.user_id = 10;
         this.username = 'tintt';
