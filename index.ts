@@ -26,3 +26,8 @@ const order: Order = {
     note: '',
     order_details: []
 }
+
+console.log('sang', sang);
+console.log('thai', thai);
+console.log('son', son);
+console.log('order', order);
