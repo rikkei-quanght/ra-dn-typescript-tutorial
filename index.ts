@@ -53,3 +53,9 @@ printUser<User>(user);
 printUser<Admin>(admin);
 printUser<Customer>(customer);
 // printUser<Product>(product);
+
+
+// Arrow function
+const arrowFunctionGeneric = <T>(item: T): T[] => {
+    return [item];
+}
