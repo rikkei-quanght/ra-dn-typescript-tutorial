@@ -1,38 +1,23 @@
-function Min(length: number) {
-    return function (constructor: Object, propertyName: string) {
-        let value: string;
-
-        const getValue = function () {
-            let now = new Date().toLocaleString('vi');
-            console.log(`Lấy ${propertyName} lúc ${now}`);
-            return value;
-        };
-
-        const setValue = function (newVal: string) {
-            value = newVal;
-            if (newVal.length < length) {
-                console.error(`${propertyName} ${newVal} ngắn quá, > ${length} ký tự`);
-            }
-        };
-
-        // Khai báo 2 method setter getter để kiểm soát 
-        Object.defineProperty(constructor, propertyName, {
-            get: getValue,
-            set: setValue
-        });
+function required() {
+    return function (target: Object, propertyKey: string | symbol, parameterIndex: number) {
+        console.log(target);
+        console.log(propertyKey);
+        console.log(parameterIndex);
     }
 }
 
 class User {
-    @Min(4)
     public username: string;
 
-    @Min(8)
     public password: string;
 
     constructor(username: string, password: string) {
         this.username = username;
         this.password = password;
+    }
+
+    display(@required() name: string, @required() name2: string) {
+        console.log(name)
     }
 }
 
