@@ -1,29 +1,52 @@
-const username : string = "tintt";
-const age : number = 29;
-const isActived : boolean = true;
-
-console.log('username', username);
-console.log('age', age);
-console.log('isActive', isActived);
-
-// Array
-const numbers: number[] = [1, 2, 3];
-const names : string[] = ["tintt", "thailq", "huynq"];
-const mixed: any[] = [1, "a", true, {}];
-
-// Function trả về number
-const calculatePriceWithTax = (price : number) : number => {
-    const rate : number = 7; // Thuế giả định: 7%
-    const tax = (price * rate / 100);
-
-    return price + tax;
+function Imutable(constructor: Function) {
+    console.log('this is Imutable decorator');
+    console.log(constructor);
+    Object.seal(constructor);
+    Object.seal(constructor.prototype);
 }
 
-const showName = (name: string) : void => {
-    console.log(name)
+@Imutable
+class User {
+    id: number;
+
+    name: string;
+
+    constructor(id: number, name: string) {
+        this.id = id;
+        this.name = name;
+    }
 }
 
-showName("Giang")
+const user: User = new User(1, 'TinTT');
+Object.seal(user);
+user.name = 'a';
+delete user.name;
 
-const priceWithTax : number = calculatePriceWithTax(1000);
-console.log(priceWithTax)
+console.log(user.name);
+
+// Example 2:
+function reportableClassDecorator<T extends { new(...args: any[]): {} }>(constructor: T) {
+    return class extends constructor {
+        reportingURL = "http://www...";
+    };
+}
+
+@reportableClassDecorator
+class BugReport {
+    type = "report";
+    title: string;
+
+    constructor(t: string) {
+        this.title = t;
+    }
+}
+
+const bug = new BugReport("Needs dark mode");
+console.log(bug.title); // Prints "Needs dark mode"
+console.log(bug.type); // Prints "report"
+
+// Note that the decorator _does not_ change the TypeScript type
+// and so the new property `reportingURL` is not known
+// to the type system:
+// bug.reportingURL;
+console.log(bug);
